@@ -1,0 +1,22 @@
+@(products: List[Product])(implicit flash: Flash, lang: Lang)
+
+@main(Messages("application.name")) {
+	<table class="table table-stripped" style="margin-top:2px">
+		@for(product <- products) {
+			<tr>
+				<td>
+				<a href="@controllers.routes.Products.show(product.ean)">
+					@product.name
+				</a>
+				</td>
+				<td>@product.description</td>	
+			</tr>
+		}
+	</table>	
+	
+	<p>
+		<a href="@controllers.routes.Products.newProduct()" class="btn">
+			<i class="icon-plus"></i>@Messages("products.new.command")
+		</a>
+	</p>
+}
