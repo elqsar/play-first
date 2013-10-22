@@ -6,11 +6,11 @@ case class Product(ean: Long, name: String, description: String)
 // companion object serves as a DAO object
 object Product {
   var products = Set(
-	Product(5010255079763L, "Paperclips Large", "Large plain pack of 1000"),
-	Product(5018206244666L, "Giant Paperclips", "Giant Plai 51 mm 100 pack"),
-	Product(5018306332812L, "Paperclip Giant Plain", "Giant Plain Pack of 10000"),
-	Product(5018306312913L, "No Tear Paper Clip", "No Tear Extra Large Pack of 1000"),
-	Product(5018206244611L, "Zebra Paperclips", "Zebra Length 28mm Assorted 150 pack")
+	Product(5010255079763L, "Micro SMG", "Magazine size 16 rounds(30 with extended)"),
+	Product(5018206244666L, "Pistol.50", "Magazie size 9 rounds. Simple."),
+	Product(5018306332812L, "Assault SMG", "Magazine size 30 rounds"),
+	Product(5018306312913L, "Norinco Type 56-2", "Rate of fire 360 RPM"),
+	Product(5018206244611L, "Tavor TAR-21", "Rate of fire 500 RPM")
   )
   
   def findAll = products.toList.sortBy(_.ean)
