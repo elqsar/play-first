@@ -1,23 +1,26 @@
 package models
 
+import org.squeryl.KeyedEntity
+import org.squeryl.Schema
+import org.squeryl.PrimitiveTypeMode._
+import org.squeryl.Query
+
 // Entity object
-case class Product(ean: Long, name: String, description: String)
+case class Product(id: Long, ean: Long, name: String, description: String) extends KeyedEntity[Long]
 
 // companion object serves as a DAO object
-object Product {
-  var products = Set(
-	Product(5010255079763L, "Micro SMG", "Magazine size 16 rounds(30 with extended)"),
-	Product(5018206244666L, "Pistol.50", "Magazie size 9 rounds. Simple."),
-	Product(5018306332812L, "Assault SMG", "Magazine size 30 rounds"),
-	Product(5018306312913L, "Norinco Type 56-2", "Rate of fire 360 RPM"),
-	Product(5018206244611L, "Tavor TAR-21", "Rate of fire 500 RPM")
-  )
-  
-  def findAll = products.toList.sortBy(_.ean)
-  
-  def findByEan(ean: Long) = products.find(_.ean == ean)
-  
-  def add(product: Product) {
-    products = products + product
-  }
+object Product extends Schema {
+
+  val productTable = table[Product]("products")
+
+  on(productTable)(p => declare {
+    p.id is (autoIncremented)
+  })
+
+  def allProducts = from(productTable)(product => select(product).orderBy(product.ean.desc))
+  def findAll: List[Product] = inTransaction(allProducts.toList)
+
+  def add(product: Product): Product = inTransaction(productTable.insert(product))
+
+  def findByEan(ean: Long): Product = inTransaction(productTable.where(product => product.ean === ean).single)
 }
