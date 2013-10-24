@@ -10,9 +10,9 @@
 			<legend>
 				@Messages("products.details", Messages("products.new"))
 			</legend>
-			@helper.inputText(productForm("ean"), 'placeholder -> "EAN")
-			@helper.inputText(productForm("name"), 'placeholder -> "Product name")
-			@helper.textarea(productForm("description"), 'placeholder -> "Description")
+			@helper.inputText(productForm("ean"), 'placeholder -> "EAN", '_showConstraints -> false)
+			@helper.inputText(productForm("name"), 'placeholder -> "Product name", '_showConstraints -> false)
+			@helper.textarea(productForm("description"), 'placeholder -> "Description", '_showConstraints -> false)
 		</fieldset>	
 		<p>
 			<input type='submit' class='btn primary' value='@Messages("products.new.submit")'>
