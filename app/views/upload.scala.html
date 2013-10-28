@@ -1,0 +1,13 @@
+@()(implicit lang: Lang, flash: Flash)
+@import helper._
+@import helper.twitterBootstrap._
+
+@main("File Upload") {
+	@helper.form(action = routes.Products.upload(), 'enctype -> "multipart/form-data") {
+		<p>Select File</p>
+		<input type="file" name="report">
+		<p>
+			<input type='submit' class='btn primary' value='Confirm'>
+		</p>	
+	}
+}

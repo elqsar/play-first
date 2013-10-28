@@ -44,6 +44,22 @@ object Products extends Controller {
 
     Ok(views.html.editProduct(form))
   }
+  
+  def file = Action { implicit request =>
+  	Ok(views.html.upload())
+  }
+  
+  def upload = Action(parse.multipartFormData) { implicit request =>
+    request.body.file("report").map { report => 
+    	import java.io.File
+    	val name = report.filename
+    	val contentType = report.contentType
+    	report.ref.moveTo(new File("/tmp/data"), true)
+    	Redirect(routes.Products.list).flashing("success" -> "File Uploaded")
+    }.getOrElse {
+      Redirect(routes.Products.upload).flashing("error" -> "Missing File")
+    }
+  }
 
   private val productForm: Form[Product] = Form(
     mapping(

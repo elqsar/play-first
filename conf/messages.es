@@ -12,5 +12,7 @@ products.new.command = Añadir
 products.new.submit = Añadir
 products.new.success = Producto {0} añadido.
 
+report.upload = Cargar
+
 validation.errors = Corrija los errores en el formulario.
 validation.ean.duplicate = Ya existe un producto con este EAN

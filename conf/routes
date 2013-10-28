@@ -9,6 +9,9 @@ GET    /products        controllers.Products.list
 GET    /products/new    controllers.Products.newProduct 
 GET    /products/:ean   controllers.Products.show(ean: Long) 
 POST   /products        controllers.Products.save
+GET    /upload        controllers.Products.file
+POST   /upload          controllers.Products.upload
+
 # Barcode
 GET    /barcode/:ean    controllers.Barcodes.barcode(ean: Long)     
 

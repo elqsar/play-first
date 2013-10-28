@@ -14,5 +14,7 @@ products.new.submit = Add
 products.new.success = Successfully added product {0}.
 products.list.navigation = All Products
 
+report.upload = Upload
+
 validation.errors = Please correct the errors in the form.
 validation.ean.duplicate = A product with this EAN code already exists

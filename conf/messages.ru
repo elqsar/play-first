@@ -12,5 +12,7 @@ products.new.command = Новый продукт
 products.new.submit = Добавить
 products.new.success = Был добавлен новый продукт {0}.
 
+report.upload = Загрузить
+
 validation.errors = Ошибки.
 validation.ean.duplicate = Продукт с таким ЕАН уже существует.
